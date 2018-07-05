@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/encrypt.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+                <h1>加密</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="pubKey">加密密钥</label>
+                <input type="text" id="pubKey" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="startBtn" class="form-control btn btn-outline-primary btn-lg">加密</button>
+            </div>
+            <div class="col">
+                <button id="returnBtn" class="form-control btn btn-outline-dark btn-lg">解密</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="textOrigin">加密内容</label>
+                <textarea id="textOrigin" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="textAfter">密文</label>
+                <textarea id="textAfter" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="originText">解密明文</label>
+                <textarea id="originText" class="form-control" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $("#startBtn").click(function () {
+        $("#textAfter").val(encrypt($("#textOrigin").val(), $("#pubKey").val()));
+    })
+    $("#returnBtn").click(function () {
+        $("#originText").val(decrypt($("#textAfter").val(), $("#pubKey").val()));
+    })
+</script>
+<style>
+    .row {
+        margin-top: 5px;
+    }
+    textarea{
+        resize:none;
+    }
+</style>
+
+</html>
